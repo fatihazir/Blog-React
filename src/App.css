@@ -36,3 +36,60 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+
+
+
+
+.AdminPanelButtons{
+  padding: 5%;
+  font-size: 5em
+}
+
+.AdminPanelButtonSection a{
+  padding: 5%;
+  text-decoration : none;
+}
+
+
+
+
+
+
+
+.ManagePostsCard{
+  padding: 1%
+}
+
+.ManagePostsCardSection span{
+  padding: 1%
+}
+.ManagePostsCardSection Button{
+  margin-right: 1%;
+}
+
+
+
+
+
+.ManageCategorieslButtons{
+  padding: .1%;
+  font-size: 2em
+}
+
+.ManageCategoriesCardSection span{
+  padding: 2%;
+}
+
+
+.AddCategoryButton{
+  width: 70%
+}
+
+
+.ManageCategoriesButton{
+  padding: 2%;
+  font-size: 2em
+}

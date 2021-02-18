@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types';
 import ReactEncrypt from 'react-encrypt'
 import {Button, Form, Container, Modal} from 'react-bootstrap';
-import {DirectToPanelAfterLogin} from './DirectToPanelAfterLogin'
+import {DirectToPanelAfterLogin} from './Admin/DirectToPanelAfterLogin'
 
 
 
