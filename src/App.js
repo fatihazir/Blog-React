@@ -7,6 +7,8 @@ import {Categories} from './Components/Categories'
 import {AdminPanel} from './Components/Admin/AdminPanel'
 import {ManageCategories} from './Components/Admin/ManageCategories'
 import {ManagePosts} from './Components/Admin/ManagePosts'
+import {ReadPost} from './Components/ReadPost'
+import {PostsByCategory} from './Components/PostsByCategory'
 import {NavigationBar} from './Components/NavigationBar'
 
 function App() {
@@ -24,7 +26,8 @@ function App() {
               <Route path='/AdminPanel' component = {AdminPanel} exact/>
               <Route path='/ManagePosts' component = {ManagePosts} exact/>
               <Route path='/ManageCategories' component = {ManageCategories} exact/>
-              {/*<Route path='/vehiclesbycompany/:id' component = {VehiclesByCompany} exact/>*/}
+              <Route path='/ReadPost/:id' component = {ReadPost} exact/>
+              <Route path='/PostsByCategory/:id' component = {PostsByCategory} exact/>
               <Route component = {Error} exact/>
           </Switch>
 

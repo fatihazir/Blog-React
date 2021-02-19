@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {Button, Container, Navbar} from "react-bootstrap";
+import {getFirstHiddenTime} from "web-vitals/dist/modules/lib/polyfills/getFirstHiddenTimePolyfill";
 
 let dataOfAdmin = sessionStorage.getItem('Admin')
 let Admin = JSON.parse(dataOfAdmin)
 
-export class AdminPanel extends Component {
-    render() {
+export const AdminPanel = () => {
        if (Admin){
            return(
                <div>
@@ -32,6 +32,5 @@ export class AdminPanel extends Component {
                </div>
            )
        }
-    }
 }
 

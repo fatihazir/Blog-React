@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Button, Container, Card, Jumbotron} from "react-bootstrap";
 import {EditPost} from "./EditPost"
-import {AddCategory} from "./AddCategory";
+import {AddPost} from "./AddPost";
 
 
 let dataOfAdmin = sessionStorage.getItem('Admin')
@@ -85,9 +85,9 @@ export class ManagePosts extends Component {
                         <EditPost onClose={this.HidePopUpEditPost} post = {this.state.Posts.filter(item => item.Id === this.state.PostDueToEdit)} />
                     ) : null}
 
-                    {/*{this.state.AddCategoryPopUpShow ? (*/}
-                    {/*    <AddPost  onClose={this.HidePopUpAddPost}  />*/}
-                    {/*) : null}*/}
+                    {this.state.AddPostPopUpShow ? (
+                        <AddPost  onClose={this.HidePopUpAddPost}  />
+                    ) : null}
 
                     <Container className="ManagePostsCardSection">
                         {Posts.sort((a, b) =>
@@ -95,13 +95,14 @@ export class ManagePosts extends Component {
                         ).map((post) => (
                             <span>
                             <Card key={post.Id} className="ManagePostsCard">
-                            <Card.Header as="h5">{post.Title}</Card.Header>
+                            <Card.Header ><h3>{post.Title}</h3> <h5>{post.CategoryName}</h5></Card.Header>
+
                             <Card.Body>
                                 <Card.Title>{post.Info}</Card.Title>
                                 <Card.Text>
                                     {post.Text.substring(0,120) + "..."}
                                 </Card.Text>
-                                <Button variant="outline-primary">Read</Button>
+                                <a href={'http://localhost:3000/ReadPost/' + post.Id}> <Button variant="outline-success">Read</Button></a>
                                 <Button onClick={() => this.ShowPopUpEditPost(post.Id)}
                                         variant="outline-secondary">Edit</Button>
                             </Card.Body>

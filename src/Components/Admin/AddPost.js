@@ -1,24 +1,17 @@
 import React, { Component } from "react";
-import {Modal, Button, Col, Form, Jumbotron, Container} from "react-bootstrap";
+import { Modal, Button, Col, Form } from "react-bootstrap";
 
-export class EditPost extends Component {
+let dataOfAdmin = sessionStorage.getItem('Admin')
+let Admin = JSON.parse(dataOfAdmin)
+
+export class AddPost extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            Post: this.props.post,
+            Category: "",
+            Categories : []
         };
-
-    }
-
-    RemovePost = async () =>
-    {
-        let postId = this.state.Post[0].Id
-        let url = "http://localhost:52030/api/post/DeletePost/" + postId;
-        let response = await fetch(url, { method: 'DELETE' });
-        let data = await response.json();
-        alert(data)
-        this.props.onClose()
     }
 
     HandleSubmit = async (e) => {
@@ -26,18 +19,16 @@ export class EditPost extends Component {
 
         let form = e.target;
 
-        let url = "http://localhost:52030/api/post/UpdatePost";
+        let url = "http://localhost:52030/api/post/AddPost";
 
         await fetch(url, {
-            method: "PUT",
+            method: "POST",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                Id : form.Id.value,
-                DatetimeOfCreated : form.DatetimeOfCreated.value,
-                CategoryId : form.CategoryId.value,
+                CategoryId : this.state.Category[0].Id,
                 Title : form.Title.value,
                 Info : form.Info.value,
                 Text : form.Text.value
@@ -56,13 +47,34 @@ export class EditPost extends Component {
             )
     };
 
+    yourChangeHandler(event) {
+        this.setState({
+            Category : this.state.Categories.filter(x => x.CategoryName === event.target.value)
+        })
+
+    }
+
+    async RefleshList() {
+        let url = "http://localhost:52030/api/category/categories"
+        let response = await fetch(url);
+        let data = await response.json();
+        this.setState({
+            Categories: data
+        });
+    }
+
+    componentDidMount() {
+        if(Admin){
+            this.RefleshList();
+        }
+
+    }
+
 
     render() {
-        let post = this.state.Post[0]
-
+        const { Categories } = this.state;
         return (
             <div>
-
                 <Modal show={true}
                        {...this.props}
                        size="lg"
@@ -70,59 +82,25 @@ export class EditPost extends Component {
                        centered
                 >
                     <Modal.Header>
-                        Edit Post
+                        Add Post
                     </Modal.Header>
                     <Modal.Body>
                         <div className="container">
                             <Col md={12} xs={6}>
                                 <Form onSubmit={this.HandleSubmit}>
-                                    <Form.Group controlId="exampleForm.ControlInput1">
-                                        <Form.Label>Id</Form.Label>
-                                        <Form.Control
-                                            size="sm"
-                                            type="text"
-                                            name="Id"
-                                            required
-                                            placeholder={post.Id}
-                                            defaultValue = {post.Id}
-                                            readOnly
-                                        />
-                                    </Form.Group>
-                                    <Form.Group controlId="exampleForm.ControlInput1">
-                                        <Form.Label>Category Id</Form.Label>
-                                        <Form.Control
-                                            size="sm"
-                                            type="text"
-                                            name="CategoryId"
-                                            required
-                                            placeholder={post.CategoryId}
-                                            defaultValue = {post.CategoryId}
-                                            readOnly
-                                        />
-                                    </Form.Group>
-                                    <Form.Group controlId="exampleForm.ControlInput1">
-                                        <Form.Label>Date-Time of created</Form.Label>
-                                        <Form.Control
-                                            size="sm"
-                                            type="text"
-                                            name="DatetimeOfCreated"
-                                            required
-                                            placeholder={post.DatetimeOfCreated}
-                                            defaultValue = {post.DatetimeOfCreated}
-                                            readOnly
-                                        />
-                                    </Form.Group>
-                                    <Form.Group controlId="exampleForm.ControlInput1">
+                                    <Form.Group controlId="exampleForm.ControlSelect1">
                                         <Form.Label>Category</Form.Label>
                                         <Form.Control
-                                            size="sm"
-                                            type="text"
+                                            as="select"
                                             name="CategoryName"
-                                            required
-                                            placeholder={post.CategoryName}
-                                            defaultValue = {post.CategoryName}
-                                            readOnly
-                                        />
+                                            onChange={this.yourChangeHandler.bind(this)}
+                                            required>
+                                            <option >Lütfen seçiniz</option>
+                                            {Categories.map((category) => (
+                                                <option>{category.CategoryName}</option>
+                                            ))}
+
+                                        </Form.Control>
                                     </Form.Group>
                                     <Form.Group controlId="exampleForm.ControlInput2">
                                         <Form.Label>Title</Form.Label>
@@ -132,7 +110,7 @@ export class EditPost extends Component {
                                             placeholder=""
                                             required
                                             name="Title"
-                                            defaultValue = {post.Title}
+                                            defaultValue = ""
                                         />
                                     </Form.Group>
                                     <Form.Group controlId="exampleForm.ControlInput2">
@@ -143,18 +121,18 @@ export class EditPost extends Component {
                                             placeholder=""
                                             required
                                             name="Info"
-                                            defaultValue = {post.Info}
+                                            defaultValue = ""
                                         />
                                     </Form.Group>
                                     <Form.Group controlId="exampleForm.ControlInput2">
                                         <Form.Label>Text</Form.Label>
                                         <Form.Control
                                             size="sm"
-                                            as="textarea" rows={10}
+                                            as="textarea" rows={15}
                                             placeholder=""
                                             required
                                             name="Text"
-                                            defaultValue = {post.Text}
+                                            defaultValue = ""
                                         />
                                     </Form.Group>
                                     <Form.Group controlId="exampleForm.ControlInput1">
@@ -173,14 +151,6 @@ export class EditPost extends Component {
 
 
                     <Modal.Footer>
-                        <Button
-                            style={{ padding: "1rem" , marginRight : '1%'}}
-                            size="sm"
-                            variant="secondary"
-                            onClick={this.RemovePost}
-                        >
-                            Remove Post
-                        </Button>
                         <Button
                             style={{ padding: "1rem" }}
                             variant="danger"

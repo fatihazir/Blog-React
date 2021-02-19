@@ -73,7 +73,6 @@
 
 
 
-
 .ManageCategorieslButtons{
   padding: .1%;
   font-size: 2em
@@ -92,4 +91,23 @@
 .ManageCategoriesButton{
   padding: 2%;
   font-size: 2em
+}
+
+
+.ReadPost p{
+  padding: 3%
+}
+
+
+
+
+
+.CategoriesButtonSection a{
+  padding: 1%;
+  text-decoration : none;
+}
+
+.CategoriesButtons{
+  padding: 2%;
+  font-size: 5em
 }

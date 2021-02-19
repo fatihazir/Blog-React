@@ -27,7 +27,7 @@ export class NavigationBar extends Component {
 
 
                                 <NavLink className = "d-inline p-2 bg-dark text-white" to="/AdminPanel" >Admin Panel</NavLink>
-                                <a href="/"><Button onClick={this.Rst} variant="danger">Log out <i className="fas fa-unlock"></i></Button></a>
+                                <a href="/Login"><Button onClick={this.Rst} variant="danger">Log out <i className="fas fa-unlock"></i></Button></a>
                             </Nav>
 
                         </Navbar.Collapse>
