@@ -41,8 +41,6 @@
 
 
 
-
-
 .AdminPanelButtons{
   padding: 5%;
   font-size: 5em
@@ -52,7 +50,6 @@
   padding: 5%;
   text-decoration : none;
 }
-
 
 
 
@@ -69,6 +66,8 @@
 .ManagePostsCardSection Button{
   margin-right: 1%;
 }
+
+
 
 
 
@@ -94,9 +93,16 @@
 }
 
 
+
+
+
+
+
+
 .ReadPost p{
   padding: 3%
 }
+
 
 
 

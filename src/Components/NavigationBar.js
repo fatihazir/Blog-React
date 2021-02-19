@@ -54,7 +54,7 @@ export class NavigationBar extends Component {
 
                                     <Dropdown.Menu>
                                         <Dropdown.Item href="/Login">Admin <i className="fas fa-user-shield"></i></Dropdown.Item>
-                                        <Dropdown.Item href="/Login">Login for members. Not activated</Dropdown.Item>
+                                        <Dropdown.Item href="/UserLogin">Login for members. Not activated</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
                                 </Nav>

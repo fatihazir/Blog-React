@@ -117,7 +117,7 @@ export class ManagePosts extends Component {
         else{
             return(
                 <div>
-                    <h1>Yetkiniz yok</h1>
+                    <h1>No Authorization</h1>
                 </div>
             )
         }

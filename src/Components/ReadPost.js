@@ -39,7 +39,7 @@ export class ReadPost extends Component {
     render() {
         const { Post } = this.state
         const { SimilarContents } = this.state
-        console.log(SimilarContents)
+        console.log(Post.DatetimeOfCreated)
 
         return (
             <div className="ReadPost">

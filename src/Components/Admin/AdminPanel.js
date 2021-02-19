@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
-import {Button, Container, Navbar} from "react-bootstrap";
-import {getFirstHiddenTime} from "web-vitals/dist/modules/lib/polyfills/getFirstHiddenTimePolyfill";
+import React from 'react';
+import {Button, Container} from "react-bootstrap";
 
 let dataOfAdmin = sessionStorage.getItem('Admin')
 let Admin = JSON.parse(dataOfAdmin)
@@ -17,7 +16,7 @@ export const AdminPanel = () => {
                        <a href="/ManageCategories" ><Button className="AdminPanelButtons" variant="outline-info" size="lg" block>
                            Manage Categories
                        </Button></a>
-                       <a href="" > <Button className="AdminPanelButtons" variant="outline-secondary" size="lg" block>
+                       <a href="/ChangePassword" > <Button className="AdminPanelButtons" variant="outline-secondary" size="lg" block>
                            Change Password
                        </Button></a>
                    </Container>

@@ -14,7 +14,7 @@ export class Categories extends Component {
         let url = "http://localhost:52030/api/category/categories"
         let response = await fetch(url);
         let data = await response.json();
-        console.log(data)
+
         this.setState({
             Categories: data,
         });
