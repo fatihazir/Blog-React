@@ -15,7 +15,7 @@ export class PostsByCategory extends Component {
         let url = "http://localhost:52030/api/post/PostByCategory/" + this.props.match.params.id;
         let response = await fetch(url);
         let data = await response.json();
-        await this.setState({
+        this.setState({
             Posts : data
         })
     }
