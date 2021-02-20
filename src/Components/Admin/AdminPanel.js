@@ -1,4 +1,5 @@
 import React from 'react';
+import {NoAuth} from '../NoAuth'
 import {Button, Container} from "react-bootstrap";
 
 let dataOfAdmin = sessionStorage.getItem('Admin')
@@ -27,7 +28,7 @@ export const AdminPanel = () => {
        else{
            return(
                <div>
-                   <h1>Yetkiniz yok</h1>
+                   <NoAuth />
                </div>
            )
        }

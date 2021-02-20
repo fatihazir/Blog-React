@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {NoAuth} from '../NoAuth'
 import {Button, Col, Container, Form} from "react-bootstrap";
 import PropTypes from "prop-types";
 import ReactEncrypt from "react-encrypt";
@@ -87,7 +88,7 @@ export class Renderer extends Component {
                        <Form onSubmit={this.HandleSubmit}>
 
                            <Form.Group controlId="exampleForm.ControlInput2">
-                               <Form.Label>Password</Form.Label>
+                               <Form.Label>New Password</Form.Label>
                                <Form.Control
                                    size="sm"
                                    type="password"
@@ -98,7 +99,7 @@ export class Renderer extends Component {
                            </Form.Group>
 
                            <Form.Group controlId="exampleForm.ControlInput2">
-                               <Form.Label>Password Control</Form.Label>
+                               <Form.Label>New Password Control</Form.Label>
                                <Form.Control
                                    size="sm"
                                    type="password"
@@ -143,7 +144,7 @@ export class Renderer extends Component {
        else{
            return(
                <div>
-                   <h1>No Authorization</h1>
+                   <NoAuth />
                </div>
            )
        }

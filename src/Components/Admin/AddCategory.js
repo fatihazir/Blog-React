@@ -45,7 +45,7 @@ export class AddCategory extends Component {
                        centered
                 >
                     <Modal.Header>
-                        Edit Category
+                        Add Category
                     </Modal.Header>
                     <Modal.Body>
                         <div className="container">

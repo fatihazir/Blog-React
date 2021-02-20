@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Button, Container, Card, Jumbotron} from "react-bootstrap";
 import {EditCategory} from "./EditCategory"
 import {AddCategory} from "./AddCategory"
+import {NoAuth} from '../NoAuth'
 
 let dataOfAdmin = sessionStorage.getItem('Admin')
 let Admin = JSON.parse(dataOfAdmin)
@@ -97,7 +98,7 @@ export class ManageCategories extends Component {
                             <Card.Header as="h3" style={{textAlign:"center"}}>{category.CategoryName}</Card.Header>
                             <Card.Body>
                                <Button onClick={() => this.ShowPopUpEditCategory(category.Id)}
-                                       className="ManageCategorieslButtons" variant="outline-primary"
+                                       className="ManageCategoriesButtons" variant="outline-primary"
                                        size="sm" block>
                                     Edit
                                </Button>
@@ -113,7 +114,7 @@ export class ManageCategories extends Component {
         else{
             return(
                 <div>
-                    <h1>No Authorization</h1>
+                    <NoAuth/>
                 </div>
             )
         }

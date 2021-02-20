@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {NoAuth} from '../NoAuth'
 import {Button, Container, Card, Jumbotron} from "react-bootstrap";
 import {EditPost} from "./EditPost"
 import {AddPost} from "./AddPost";
@@ -117,7 +118,7 @@ export class ManagePosts extends Component {
         else{
             return(
                 <div>
-                    <h1>No Authorization</h1>
+                    <NoAuth/>
                 </div>
             )
         }
